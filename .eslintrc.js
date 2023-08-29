@@ -1,11 +1,6 @@
 module.exports = {
   root: true,
-  extends: [
-    "airbnb-base",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "prettier",
-  ],
+  extends: ["airbnb-base", "plugin:react/recommended", "plugin:prettier/recommended", "prettier"],
   plugins: ["eslint-comments", "react", "react-hooks", "jest", "import"],
   env: {
     es6: true,
@@ -45,10 +40,7 @@ module.exports = {
       },
     },
     {
-      files: [
-        "*.{spec,test}.{js,ts,tsx}",
-        "**/__{mocks,tests}__/**/*.{js,ts,tsx}",
-      ],
+      files: ["*.{spec,test}.{js,ts,tsx}", "**/__{mocks,tests}__/**/*.{js,ts,tsx}"],
       env: {
         jest: true,
         "jest/globals": true,
@@ -68,11 +60,7 @@ module.exports = {
     camelcase: "off",
     "default-case": "off",
     "global-require": "warn",
-    "lines-between-class-members": [
-      "error",
-      "always",
-      { exceptAfterSingleLine: true },
-    ],
+    "lines-between-class-members": ["error", "always", { exceptAfterSingleLine: true }],
     "no-else-return": "off",
     "no-plusplus": "off",
     "no-underscore-dangle": "off",
@@ -99,13 +87,11 @@ module.exports = {
       },
       {
         selector: "LabeledStatement",
-        message:
-          "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
+        message: "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
       },
       {
         selector: "WithStatement",
-        message:
-          "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+        message: "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
       },
     ],
     quotes: ["warn", "double"],
@@ -155,11 +141,7 @@ module.exports = {
     "import/order": [
       "error",
       {
-        groups: [
-          "external",
-          ["sibling", "parent"],
-          ["internal", "builtin", "index", "unknown"],
-        ],
+        groups: ["external", ["sibling", "parent"], ["internal", "builtin", "index", "unknown"]],
         pathGroupsExcludedImportTypes: [""],
         alphabetize: {
           order: "asc",
