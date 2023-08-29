@@ -1,66 +1,50 @@
-module.exports = {
-  root: true,
-  extends: ["airbnb-base", "plugin:react/recommended", "plugin:prettier/recommended", "prettier"],
-  plugins: ["eslint-comments", "react", "react-hooks", "jest", "import"],
-  env: {
-    es6: true,
-    jest: true,
+{
+  "root": true,
+  "extends": ["airbnb-base", "plugin:react/recommended", "plugin:prettier/recommended", "prettier"],
+  "plugins": ["eslint-comments", "react", "react-hooks", "import"],
+  "env": {
+    "es6": true,
+    "jest": true
   },
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    ecmaVersion: 2020,
-    sourceType: "module",
+    "ecmaVersion": 2020,
+    "sourceType": "module"
   },
 
-  overrides: [
+  "overrides": [
     {
-      files: ["*.js", "*.jsx"],
-      parser: "@babel/eslint-parser",
-      plugins: ["flowtype"],
-      rules: {
-        "flowtype/define-flow-type": 1,
-        "flowtype/use-flow-type": 1,
-      },
-    },
-    {
-      files: ["*.ts", "*.tsx"],
-      parser: "@typescript-eslint/parser",
-      plugins: ["@typescript-eslint/eslint-plugin"],
-      extends: ["plugin:@typescript-eslint/recommended"],
-      rules: {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint/eslint-plugin"],
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "rules": {
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/no-empty-interface": "off",
         "@typescript-eslint/no-inferrable-types": "off",
         "@typescript-eslint/no-unused-vars": "warn",
-        "@typescript-eslint/camelcase": "off",
-      },
-    },
-    {
-      files: ["*.{spec,test}.{js,ts,tsx}", "**/__{mocks,tests}__/**/*.{js,ts,tsx}"],
-      env: {
-        jest: true,
-        "jest/globals": true,
-      },
-    },
+        "@typescript-eslint/camelcase": "off"
+      }
+    }
   ],
 
-  globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
 
-  rules: {
+  "rules": {
     /** ******** GENERAL ********* */
 
     "no-alert": "off",
-    camelcase: "off",
+    "camelcase": "off",
     "default-case": "off",
     "global-require": "warn",
-    "lines-between-class-members": ["error", "always", { exceptAfterSingleLine: true }],
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "no-else-return": "off",
     "no-plusplus": "off",
     "no-underscore-dangle": "off",
@@ -81,34 +65,33 @@ module.exports = {
     "no-restricted-syntax": [
       "error",
       {
-        selector: "ForInStatement",
-        message:
-          "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.",
+        "selector": "ForInStatement",
+        "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
       },
       {
-        selector: "LabeledStatement",
-        message: "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
+        "selector": "LabeledStatement",
+        "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
       },
       {
-        selector: "WithStatement",
-        message: "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
-      },
+        "selector": "WithStatement",
+        "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+      }
     ],
-    quotes: ["warn", "double"],
+    "quotes": ["warn", "double"],
 
     /** ******** PRETTIER ********* */
     "prettier/prettier": [
       "error",
       {
-        endOfLine: "auto",
-      },
+        "endOfLine": "auto"
+      }
     ],
 
     /** ******** BEST-PRACTICES ********* */
 
     // specify curly brace conventions for all control statements
     // https://eslint.org/docs/rules/curly
-    curly: ["error", "all"],
+    "curly": ["error", "all"],
 
     // enforce that class methods use "this"
     // https://eslint.org/docs/rules/class-methods-use-this
@@ -120,7 +103,7 @@ module.exports = {
 
     // require the use of === and !==
     // https://eslint.org/docs/rules/eqeqeq
-    eqeqeq: ["error", "always", { null: "ignore" }],
+    "eqeqeq": ["error", "always", { "null": "ignore" }],
 
     // make sure for-in loops have an if statement
     // https://eslint.org/docs/rules/guard-for-in
@@ -141,13 +124,13 @@ module.exports = {
     "import/order": [
       "error",
       {
-        groups: ["external", ["sibling", "parent"], ["internal", "builtin", "index", "unknown"]],
-        pathGroupsExcludedImportTypes: [""],
-        alphabetize: {
-          order: "asc",
+        "groups": ["external", ["sibling", "parent"], ["internal", "builtin", "index", "unknown"]],
+        "pathGroupsExcludedImportTypes": [""],
+        "alphabetize": {
+          "order": "asc"
         },
-        "newlines-between": "always",
-      },
+        "newlines-between": "always"
+      }
     ],
     "import/prefer-default-export": "off",
     "import/no-mutable-exports": "off",
@@ -163,8 +146,8 @@ module.exports = {
     "react/jsx-filename-extension": [
       "warn",
       {
-        extensions: [".jsx", ".tsx"],
-      },
+        "extensions": [".jsx", ".tsx"]
+      }
     ],
 
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
@@ -186,8 +169,8 @@ module.exports = {
     "react/no-unescaped-entities": [
       "error",
       {
-        forbid: [">", "}"],
-      },
+        "forbid": [">", "}"]
+      }
     ],
 
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
@@ -203,20 +186,20 @@ module.exports = {
     "react/self-closing-comp": [
       "error",
       {
-        component: true,
-        html: true,
-      },
+        "component": true,
+        "html": true
+      }
     ],
 
     /** ******** REACT HOOKS ********* */
 
     // https://reactjs.org/docs/hooks-rules.html
     "react-hooks/exhaustive-deps": "warn",
-    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/rules-of-hooks": "error"
   },
-  settings: {
-    react: {
-      version: "detect",
-    },
-  },
-};
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
