@@ -3,11 +3,11 @@ import { useCallback, useMemo, useState } from "react";
 import { Pagination, PaginationFetchResult } from "../models/IPagination";
 
 interface Params<T> {
-  initialData: T[];
+  initialData?: T[];
   fetchFn: (page?: number) => Promise<PaginationFetchResult<T[]>>;
 }
 
-const usePaginationFetch = <T>({ initialData, fetchFn }: Params<T>) => {
+const usePaginationFetch = <T>({ initialData = [], fetchFn }: Params<T>) => {
   const [data, setData] = useState<T[]>(initialData);
   const [isLoading, setIsLoading] = useState(false);
   const pagination = useMemo(() => new Pagination(), []);
@@ -23,7 +23,7 @@ const usePaginationFetch = <T>({ initialData, fetchFn }: Params<T>) => {
 
   const fetch = useCallback(() => {
     setIsLoading(true);
-    fetchFn().then(getPagination);
+    return fetchFn().then(getPagination);
   }, [fetchFn, getPagination]);
 
   const fetchNextPage = useCallback(() => {
@@ -31,7 +31,7 @@ const usePaginationFetch = <T>({ initialData, fetchFn }: Params<T>) => {
       return;
     }
     setIsLoading(true);
-    fetchFn(pagination.getNextPage).then(getPagination);
+    return fetchFn(pagination.getNextPage).then(getPagination);
   }, [fetchFn, pagination, getPagination]);
 
   return { data, fetch, fetchNextPage, isLoading };

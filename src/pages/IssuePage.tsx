@@ -7,6 +7,7 @@ import IssueItem from "../components/issue/IssueItem";
 import { CONTENT_COUNT } from "../constants/issue";
 import useIntersectionObserver from "../hooks/useIntersectionObsever";
 import usePaginationFetch from "../hooks/usePaginationFetch";
+import useToast from "../hooks/useToast";
 import Header from "../layouts/Header";
 import { getIssueList } from "../services/issue";
 
@@ -18,16 +19,21 @@ const IssuePage = () => {
     fetchNextPage,
     isLoading,
   } = usePaginationFetch({ initialData: [], fetchFn: getIssueList });
+  const { show } = useToast();
 
   useEffect(() => {
-    fetch();
-  }, [fetch]);
+    fetch().catch(() => {
+      show({ message: "이슈 조회에 실패했습니다." });
+    });
+  }, [fetch, show]);
 
   useEffect(() => {
     if (entry?.isIntersecting) {
-      fetchNextPage();
+      fetchNextPage()?.catch(() => {
+        show({ message: "이슈 조회에 실패했습니다." });
+      });
     }
-  }, [entry, fetchNextPage]);
+  }, [entry, fetchNextPage, show]);
 
   return (
     <Wrapper>
