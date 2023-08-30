@@ -16,7 +16,7 @@ const IssueItem = forwardRef<HTMLLIElement, Props>(({ issue }, ref) => {
       <LeftWrapper>
         <OpenedIssueSvg />
         <div>
-          <Link to={`${PATH_ISSUE_DETAIL}/${issue.id}`}>
+          <Link to={`${PATH_ISSUE_DETAIL}/${issue.id}`} state={{ issue }}>
             <Title>{issue.title}</Title>
           </Link>
           <InfoWrapper>
