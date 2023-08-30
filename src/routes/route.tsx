@@ -1,0 +1,17 @@
+import { createBrowserRouter } from "react-router-dom";
+
+import { PATH_ISSUE_DETAIL, PATH_ROOT } from "../constants/path";
+import IssuePage from "../pages/IssuePage";
+
+const router = createBrowserRouter([
+  {
+    path: PATH_ROOT,
+    element: <IssuePage />,
+  },
+  {
+    path: `${PATH_ISSUE_DETAIL}/:issueId`,
+    element: <div>issue</div>,
+  },
+]);
+
+export default router;
