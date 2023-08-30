@@ -13,3 +13,8 @@ export const getIssueList = async (page: number = DEFAULT_ISSUE_PAGE): Promise<P
     nextPage: response.data.length === ISSUE_PER_PAGE ? response.config.params.page + 1 : null,
   };
 };
+
+export const getIssueDetail = async (id: string) => {
+  const { data } = await githubService.get<IIssue>(`https://api.github.com/repos/facebook/react/issues/${id}`);
+  return new Issue(data);
+};

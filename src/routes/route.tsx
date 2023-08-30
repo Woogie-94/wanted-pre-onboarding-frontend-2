@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { PATH_ISSUE_DETAIL, PATH_ROOT } from "../constants/path";
+import IssueDetailPage from "../pages/IssueDetailPage";
 import IssuePage from "../pages/IssuePage";
 
 const router = createBrowserRouter([
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
   },
   {
     path: `${PATH_ISSUE_DETAIL}/:issueId`,
-    element: <div>issue</div>,
+    element: <IssueDetailPage />,
   },
 ]);
 

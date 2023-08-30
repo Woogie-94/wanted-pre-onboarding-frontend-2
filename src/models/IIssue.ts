@@ -8,7 +8,7 @@ export interface IIssue {
   number: number;
   user: {
     login: string;
-    avater_url: string;
+    avatar_url: string;
   };
 }
 
@@ -20,7 +20,7 @@ export class Issue {
   createdAt: string;
   user: {
     nickname: string;
-    avaterUrl: string;
+    avatarUrl: string;
   };
 
   constructor(data: IIssue) {
@@ -31,7 +31,7 @@ export class Issue {
     this.createdAt = dateFormat(new Date(data.created_at), "long");
     this.user = {
       nickname: data.user.login,
-      avaterUrl: data.user.avater_url,
+      avatarUrl: data.user.avatar_url,
     };
   }
 }
