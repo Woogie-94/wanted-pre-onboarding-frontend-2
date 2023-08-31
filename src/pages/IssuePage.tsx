@@ -40,20 +40,15 @@ const IssuePage = () => {
       <Header />
       <Content>
         <ul>
-          {issueList.map((issue, index) =>
-            (index + 1) % CONTENT_COUNT ? (
-              <IssueItem key={issue.id} issue={issue} ref={issueList.length - 1 === index ? setTarget : null} />
-            ) : (
-              <Fragment key={issue.id}>
-                <IssueItem issue={issue} ref={issueList.length - 1 === index ? setTarget : null} />
-                <AdItem />
-              </Fragment>
-            ),
-          )}
+          {issueList.map((issue, index) => (
+            <Fragment key={issue.id}>
+              <IssueItem issue={issue} ref={issueList.length - 1 === index ? setTarget : null} />
+              {!((index + 1) % CONTENT_COUNT) && <AdItem />}
+            </Fragment>
+          ))}
         </ul>
         {isLoading && (
           <>
-            <Skeleton width="100%" height="67px" margin="8px 0" />
             <Skeleton width="100%" height="67px" margin="8px 0" />
             <Skeleton width="100%" height="67px" margin="8px 0" />
             <Skeleton width="100%" height="67px" margin="8px 0" />
