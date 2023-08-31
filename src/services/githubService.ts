@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const githubService = axios.create();
-githubService.defaults.baseURL = "https://www.pre-onboarding-selection-task.shop";
+githubService.defaults.baseURL = "https://api.github.com";
 
 githubService.interceptors.request.use(config => {
   if (import.meta.env.VITE_GITHUB_AUTH_TOKEN) {

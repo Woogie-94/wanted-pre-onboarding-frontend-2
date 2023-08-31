@@ -4,7 +4,7 @@ import { IIssue, Issue } from "../models/IIssue";
 import { PaginationFetchResult } from "../models/IPagination";
 
 export const getIssueList = async (page: number = DEFAULT_ISSUE_PAGE): Promise<PaginationFetchResult<Issue[]>> => {
-  const response = await githubService.get<IIssue[]>("https://api.github.com/repos/facebook/react/issues", {
+  const response = await githubService.get<IIssue[]>("/repos/facebook/react/issues", {
     params: { state: "open", sort: "comments", per_page: ISSUE_PER_PAGE, page },
   });
 
@@ -15,6 +15,6 @@ export const getIssueList = async (page: number = DEFAULT_ISSUE_PAGE): Promise<P
 };
 
 export const getIssueDetail = async (id: string) => {
-  const { data } = await githubService.get<IIssue>(`https://api.github.com/repos/facebook/react/issues/${id}`);
+  const { data } = await githubService.get<IIssue>(`/repos/facebook/react/issues/${id}`);
   return new Issue(data);
 };
