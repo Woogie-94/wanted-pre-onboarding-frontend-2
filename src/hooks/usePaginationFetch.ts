@@ -12,7 +12,7 @@ const usePaginationFetch = <T>({ initialData = [], fetchFn }: Params<T>) => {
   const [isLoading, setIsLoading] = useState(false);
   const pagination = useMemo(() => new Pagination(), []);
 
-  const getPagination = useCallback(
+  const getFetchResult = useCallback(
     (result: PaginationFetchResult<T[]>) => {
       pagination.setNextPage = result.nextPage;
       setData(prev => [...prev, ...result.data]);
@@ -23,16 +23,16 @@ const usePaginationFetch = <T>({ initialData = [], fetchFn }: Params<T>) => {
 
   const fetch = useCallback(() => {
     setIsLoading(true);
-    return fetchFn().then(getPagination);
-  }, [fetchFn, getPagination]);
+    return fetchFn().then(getFetchResult);
+  }, [fetchFn, getFetchResult]);
 
   const fetchNextPage = useCallback(() => {
     if (pagination.isLast) {
       return;
     }
     setIsLoading(true);
-    return fetchFn(pagination.getNextPage).then(getPagination);
-  }, [fetchFn, pagination, getPagination]);
+    return fetchFn(pagination.getNextPage).then(getFetchResult);
+  }, [fetchFn, pagination, getFetchResult]);
 
   return { data, fetch, fetchNextPage, isLoading };
 };
